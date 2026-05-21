@@ -39,6 +39,7 @@ class JobSpyScraper:
             "linkedin_fetch_description": True,
             "linkedin_company_fetch_description": True,
             "description_format": "markdown",
+            "timeout": 15,
         }
 
     async def scrape_jobs_async(self, request: JobScrapeRequest) -> JobScrapeResult:

@@ -30,28 +30,45 @@ async def scrape_all() -> dict[str, int]:
     total_stats = {"inserted": 0, "updated": 0, "skipped": 0}
 
     try:
-        # Common search terms for comprehensive job scraping
-        search_terms = [
-            "software engineer",
-            "data scientist",
-            "product manager",
-            "marketing manager",
-            "sales representative",
+        # Custom queries targeting FAANG, YC, and Remote roles for India-based candidates
+        search_queries = [
+            # 1. FAANG / Big Tech in India
+            {"term": "software engineer google", "location": "India"},
+            {"term": "software engineer meta", "location": "India"},
+            {"term": "software engineer microsoft", "location": "India"},
+            {"term": "software engineer amazon", "location": "India"},
+            
+            # 2. YC / Startups / Remote
+            {"term": "software engineer y combinator", "location": "India"},
+            {"term": "software engineer remote", "location": "India"},
+            {"term": "machine learning engineer remote", "location": "India"},
+            
+            # 3. Core Software Engineering / AI
+            {"term": "software engineer", "location": "India"},
+            {"term": "backend engineer", "location": "India"},
+            {"term": "frontend engineer", "location": "India"},
+            {"term": "machine learning engineer", "location": "India"},
+            {"term": "ai engineer", "location": "India"},
+            {"term": "data engineer", "location": "India"},
+            {"term": "SDE", "location": "India"},
+            {"term": "full stack developer", "location": "India"},
         ]
 
-        # Search multiple sites for comprehensive coverage
-        sites = ["linkedin", "indeed", "glassdoor"]
+        # Focus on LinkedIn to avoid Datacenter IP blocks/hangs from Indeed/Glassdoor
+        sites = ["linkedin"]
 
-        for search_term in search_terms:
+        for query in search_queries:
+            search_term = query["term"]
+            location = query["location"]
             try:
-                logger.info("Scraping jobs for: %s", search_term)
+                logger.info("Scraping jobs for: %s in %s", search_term, location)
 
                 # Use JobService to scrape and save jobs
                 result = await job_service.search_and_save_jobs(
                     search_term=search_term,
-                    location="United States",
+                    location=location,
                     sites=sites,
-                    results_wanted=50,  # Reasonable batch size
+                    results_wanted=8,  # Smaller batch per query for rapid scraping
                     save_to_db=True,
                 )
 
@@ -59,7 +76,7 @@ async def scrape_all() -> dict[str, int]:
                 jobs_found = len(result.jobs)
                 total_stats["inserted"] += jobs_found
 
-                logger.info("Found %d jobs for '%s'", jobs_found, search_term)
+                logger.info("Found %d jobs for '%s' in %s", jobs_found, search_term, location)
 
             except Exception as e:
                 logger.warning("Failed to scrape jobs for '%s': %s", search_term, e)
