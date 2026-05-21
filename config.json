@@ -1,0 +1,132 @@
+{
+  "targets": [
+    {
+      "company": "Google",
+      "careers_url": "https://careers.google.com/jobs/results/?employment_type=FULL_TIME",
+      "keywords": [
+        "software engineer",
+        "SWE",
+        "SDE"
+      ]
+    },
+    {
+      "company": "Meta",
+      "careers_url": "https://www.metacareers.com/jobs?roles[0]=software-engineer",
+      "keywords": [
+        "software engineer",
+        "backend",
+        "infrastructure"
+      ]
+    },
+    {
+      "company": "Amazon",
+      "careers_url": "https://www.amazon.jobs/en/search?base_query=software+engineer&loc_query=&latitude=&longitude=&loc_group_id=&invalid_location=false&country=&city=&region=&county=",
+      "keywords": [
+        "software development engineer",
+        "SDE"
+      ]
+    },
+    {
+      "company": "Apple",
+      "careers_url": "https://jobs.apple.com/en-us/search?search=software+engineer&sort=newest",
+      "keywords": [
+        "software engineer",
+        "software developer"
+      ]
+    },
+    {
+      "company": "Netflix",
+      "careers_url": "https://jobs.netflix.com/search?q=software+engineer",
+      "keywords": [
+        "software engineer",
+        "senior engineer"
+      ]
+    },
+    {
+      "company": "Microsoft",
+      "careers_url": "https://jobs.careers.microsoft.com/global/en/search?q=software+engineer&lc=&l=en_us&pgSz=20&o=Recent",
+      "keywords": [
+        "software engineer",
+        "SWE II"
+      ]
+    },
+    {
+      "company": "Stripe",
+      "careers_url": "https://stripe.com/jobs/search?query=software+engineer",
+      "keywords": [
+        "software engineer"
+      ]
+    },
+    {
+      "company": "Airbnb",
+      "careers_url": "https://careers.airbnb.com/positions/?department=Engineering",
+      "keywords": [
+        "software engineer"
+      ]
+    },
+    {
+      "company": "Uber",
+      "careers_url": "https://www.uber.com/global/en/careers/list/?query=software+engineer",
+      "keywords": [
+        "software engineer"
+      ]
+    },
+    {
+      "company": "LinkedIn",
+      "careers_url": "https://careers.linkedin.com/jobs/search?keywords=software+engineer",
+      "keywords": [
+        "software engineer",
+        "backend"
+      ]
+    },
+    {
+      "company": "Spotify",
+      "careers_url": "https://www.lifeatspotify.com/jobs?l=remote&c=engineering",
+      "keywords": [
+        "software engineer",
+        "backend engineer"
+      ]
+    },
+    {
+      "company": "OpenAI",
+      "careers_url": "https://openai.com/careers/",
+      "keywords": [
+        "software engineer",
+        "research engineer"
+      ]
+    },
+    {
+      "company": "Anthropic",
+      "careers_url": "https://boards.greenhouse.io/anthropic",
+      "keywords": [
+        "software engineer"
+      ]
+    },
+    {
+      "company": "DeepMind",
+      "careers_url": "https://www.deepmind.com/careers",
+      "keywords": [
+        "software engineer",
+        "research engineer"
+      ]
+    }
+  ],
+  "output": {
+    "format": "sqlite",
+    "path": "./jobs.db"
+  },
+  "schedule": {
+    "frequency": "daily",
+    "time": "07:00"
+  },
+  "filters": {
+    "min_experience_years": 0,
+    "remote_only": false,
+    "exclude_keywords": [
+      "director",
+      "manager",
+      "VP",
+      "intern"
+    ]
+  }
+}
